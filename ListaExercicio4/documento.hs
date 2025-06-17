@@ -78,4 +78,17 @@ shorten = map (\(ns, w) -> (unique ns, w))
 
 unique = foldr (\x seen -> if x `elem` seen then seen else x : seen) []
 
--- pega a lista de linhas onde o numero se repete e aplica o unique auxiliar
+-- pega a lista de linhas onde o numero se repete e aplica o uniquedo auxiliar
+
+makeindex :: Doc -> [([Int], Word')]
+makeindex txt = shorten . almalgamate . sortLs . allNumWords . numLines $ txt
+
+formatIndex :: [([Int], Word')] -> String
+formatIndex xs = unlines [w ++ " - " ++ show ns | (ns, w) <- xs]
+
+main :: IO ()
+main = do
+    putStr "Arquivos: "
+    arq <- getLine
+    txt <- readFile arq
+    putStr $ formatIndex (makeindex txt)
