@@ -1,3 +1,4 @@
-Departamento de Ciencia da Computacao
+Departamento de Ciencia Ciencia da Computacao
 Curso de Ciencia da Computacao
 Programacao Funcional
+Teste
